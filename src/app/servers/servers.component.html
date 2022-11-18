@@ -21,8 +21,8 @@
 <ng-template #noServer>
 	<p>No server was created.</p> 
 </ng-template>
-<app-server></app-server>
-<app-server></app-server>
+<app-server *ngFor="let server of servers"></app-server>
+
 
 <hr>
 <label >Reset User name: </label>
@@ -38,3 +38,23 @@
 </button>
 <p>{{ userNameCreationStatus }}</p>
 <hr>
+<button 
+	class="btn btn-primary"
+	(click)="recordDetailsClick()">
+	Display Details
+</button>
+<p *ngIf="click % 2 != 0">Secret Password = tuna</p>
+<p 
+	*ngFor="let detailsClick of detailsClicks"
+	[ngStyle]="{ backgroundColor: getBackgroundColor(detailsClick)}"
+	[ngClass]="{afterFive: getNumberStatus(detailsClick)}">
+	Count is {{ detailsClick }}
+</p>
+
+
+<!-- 
+[ngStyle]="{ 'backgroundColor': getColor() }"
+[ngClass]="{online: serverStatus === 'online'}" -->
+
+
+<!-- [ngStyle]="{ 'backgroundColor': getBackgroundColor()}">Count is {{ detailsClick }} -->
