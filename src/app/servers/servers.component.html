@@ -43,18 +43,10 @@
 	(click)="recordDetailsClick()">
 	Display Details
 </button>
-<p *ngIf="click % 2 != 0">Secret Password = tuna</p>
+<p *ngIf="showSecret">Secret Password = tuna</p>
 <p 
-	*ngFor="let detailsClick of detailsClicks"
-	[ngStyle]="{ backgroundColor: getBackgroundColor(detailsClick)}"
-	[ngClass]="{afterFive: getNumberStatus(detailsClick)}">
-	Count is {{ detailsClick }}
+	*ngFor="let logItem of log; let i = index"
+	[ngStyle]="{ backgroundColor: getBackgroundColor(i)}"
+	[ngClass]="{afterFive: getNumberStatus(i)}">
+	Secret toggled at {{ logItem }}
 </p>
-
-
-<!-- 
-[ngStyle]="{ 'backgroundColor': getColor() }"
-[ngClass]="{online: serverStatus === 'online'}" -->
-
-
-<!-- [ngStyle]="{ 'backgroundColor': getBackgroundColor()}">Count is {{ detailsClick }} -->

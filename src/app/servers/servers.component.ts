@@ -15,8 +15,8 @@ export class ServersComponent implements OnInit {
   userNameCreationStatus = '';
   serverCreated = false;
   servers = ['Testserver', 'Testserver 2']
-  detailsClicks = [];
-  click = 0;
+  log = [];
+  showSecret = false;
 
 
   constructor() { 
@@ -44,16 +44,17 @@ export class ServersComponent implements OnInit {
   }
   
   recordDetailsClick() {
-    this.detailsClicks.push(this.click);
-
-    this.click = this.click + 1;
+    // this.detailsClicks.push(this.click);
+    // this.click = this.click + 1;
+    this.showSecret = !this.showSecret;
+    this.log.push(new Date());
   }
 
-  getBackgroundColor(detailsClick) {
-    return detailsClick > 4 ? 'blue' : 'transparent';
+  getBackgroundColor(i) {
+    return i > 4 ? 'blue' : 'transparent';
   }
 
-  getNumberStatus(detailsClick) {
-    return detailsClick > 4;
+  getNumberStatus(i) {
+    return i > 4;
   }
 }
